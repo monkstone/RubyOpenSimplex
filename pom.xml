@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+
+DO NOT MODIFY - GENERATED CODE
+
+
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>monkstone</groupId>
+  <artifactId>jruby_noise</artifactId>
+  <version>0.0.1</version>
+  <name>jruby_noise</name>
+  <description>A JRuby Wrapper for OpenSimplex2</description>
+  <url>http://maven.apache.org</url>
+  <organization>
+    <name>monkstone</name>
+    <url>https://monkstone.github.io</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>GPL 3</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>monkstone</id>
+      <name>Martin Prout</name>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>KDotJPG</id>
+      <name>Kurt Spencer</name>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/monkstone/RubyOpenSimplex/issues</url>
+  </issueManagement>
+  <properties>
+    <jruby.api>http://jruby.org/apidocs/</jruby.api>
+    <jruby_noise.basedir>${project.basedir}</jruby_noise.basedir>
+    <polyglot.dump.pom>pom.xml</polyglot.dump.pom>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <source.directory>src</source.directory>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.jruby</groupId>
+      <artifactId>jruby</artifactId>
+      <version>9.2.17.0</version>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>${source.directory}/main/java</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>
+        <configuration>
+          <detectOfflineLinks>false</detectOfflineLinks>
+          <links>
+            <link>${jruby.api}</link>
+          </links>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Automatic-Module-Name>monkstone.noise</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jdeps-plugin</artifactId>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jdkinternals</goal>
+              <goal>test-jdkinternals</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
