@@ -6,7 +6,7 @@ require_relative 'test_helper'
 Java::Monkstone::NoiseLibrary.new.load(JRuby.runtime, false)
 # method tests
 class NoiseTest < Minitest::Test
-  include FastNoise
+  include SmoothNoise
 
   def test_noise1d
     x = 0.4
