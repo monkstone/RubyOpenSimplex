@@ -7,6 +7,7 @@ package monkstone;
 
 import monkstone.noise.OpenSimplex2S;
 import org.jruby.Ruby;
+import org.jruby.RubyBoolean;
 import org.jruby.RubyFixnum;
 import org.jruby.RubyFloat;
 import org.jruby.RubyModule;
@@ -20,7 +21,7 @@ import org.jruby.runtime.builtin.IRubyObject;
  *
  * @author Martin Prout
  */
-@JRubyModule(name = "FastNoise")
+@JRubyModule(name = "SmoothNoise")
 public class SmoothNoiseModuleJava {
 
     static OpenSimplex2S ng = new OpenSimplex2S(System.currentTimeMillis());
@@ -30,7 +31,7 @@ public class SmoothNoiseModuleJava {
      * @param runtime Ruby
      */
     public static void createNoiseModule(Ruby runtime) {
-        RubyModule noiseModule = runtime.defineModule("NoiseModule");
+        RubyModule noiseModule = runtime.defineModule("SmoothNoise");
         noiseModule.defineAnnotatedMethods(SmoothNoiseModuleJava.class);
     }
 
@@ -135,13 +136,14 @@ public class SmoothNoiseModuleJava {
         }
         return RubyFloat.newFloat(context.runtime, result);
     }
-    @JRubyMethod(name = "noise_seed", rest = true, module = true)
-    public static IRubyObject noiseSeedImpl(ThreadContext context, IRubyObject recv, IRubyObject arg) {
-        long seed;
-        if (arg instanceof RubyNumeric) {
-            seed = ((RubyNumeric) arg).getLongValue();
-            ng = new OpenSimplex2S(seed);
-        }
-        return (IRubyObject) ng;
-    }
+//    @JRubyMethod(name = "noise_seed", rest = true, module = true)
+//    public static IRubyObject noiseSeedImpl(ThreadContext context, IRubyObject recv, IRubyObject arg) {
+//        long seed;
+//        if (arg instanceof RubyNumeric) {
+//            seed = ((RubyNumeric) arg).getLongValue();
+//            ng = new OpenSimplex2S(seed);
+//            return RubyBoolean.newBoolean(context.runtime, true);
+//        }
+//       return RubyBoolean.newBoolean(context.runtime, false); 
+//    }
 }
