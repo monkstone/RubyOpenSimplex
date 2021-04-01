@@ -7,11 +7,9 @@ package monkstone;
 
 import monkstone.noise.OpenSimplex2F;
 import org.jruby.Ruby;
-import org.jruby.RubyBoolean;
 import org.jruby.RubyFixnum;
 import org.jruby.RubyFloat;
 import org.jruby.RubyModule;
-import org.jruby.RubyNumeric;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.anno.JRubyModule;
 import org.jruby.runtime.ThreadContext;
@@ -58,24 +56,24 @@ public class FastNoiseModuleJava {
                 break;
             case 2:
                 if (args[1] instanceof RubyFloat) {
-                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
+                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[1]).getValue() : ((RubyFixnum) args[1]).getDoubleValue();
                     one = (args[0] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
                     result = ng.noise2_XBeforeY(one, two);
                 }
                 break;
             case 3:
                 if (args[2] instanceof RubyFloat) {
-                    three = (args[2] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
-                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
+                    three = (args[2] instanceof RubyFloat) ? ((RubyFloat) args[2]).getValue() : ((RubyFixnum) args[2]).getDoubleValue();
+                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[1]).getValue() : ((RubyFixnum) args[1]).getDoubleValue();
                     one = (args[0] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
                     result = ng.noise3_XYBeforeZ(one, two, three);
                 }
                 break;
             case 4:
                 if (args[3] instanceof RubyFloat) {
-                    four = (args[3] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
-                    three = (args[2] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
-                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
+                    four = (args[3] instanceof RubyFloat) ? ((RubyFloat) args[3]).getValue() : ((RubyFixnum) args[3]).getDoubleValue();
+                    three = (args[2] instanceof RubyFloat) ? ((RubyFloat) args[2]).getValue() : ((RubyFixnum) args[2]).getDoubleValue();
+                    two = (args[1] instanceof RubyFloat) ? ((RubyFloat) args[1]).getValue() : ((RubyFixnum) args[1]).getDoubleValue();
                     one = (args[0] instanceof RubyFloat) ? ((RubyFloat) args[0]).getValue() : ((RubyFixnum) args[0]).getDoubleValue();
                     result = ng.noise4_XYBeforeZW(one, two, three, four);
                 }
