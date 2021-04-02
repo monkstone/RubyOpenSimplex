@@ -8,34 +8,49 @@ Java::Monkstone::NoiseLibrary.new.load(JRuby.runtime, false)
 class NoiseTest < Minitest::Test
   include SmoothNoise
 
+  VALS = [0.4, 0.5, 4, 5].freeze
+
   def test_noise1d
-    x = 0.4
+
     assert self.respond_to? :noise
-    assert (-1.0..1.0).include?(noise(x))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(noise(x))
+    end
   end
 
   def test_noise2d
-    x = 0.4
-    assert (-1.0..1.0).include?(noise(x, Math.sin(x)))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(noise(x, Math.sin(x)))
+    end
   end
 
   def test_noise3d
-    x = 0.4
-    assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x)))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x)))
+    end
   end
 
   def test_noise4d
-    x = 0.4
-    assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x), rand))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x), rand))
+    end
+  end
+
+  def test_tnoise2d
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x)))
+    end
   end
 
   def test_tnoise3d
-    x = 0.4
-    assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x)))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x)))
+    end
   end
 
   def test_tnoise4d
-    x = 0.4
-    assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x), rand))
+    VALS.each do |x|
+      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x), rand))
+    end
   end
 end
