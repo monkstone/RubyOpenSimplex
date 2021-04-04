@@ -7,6 +7,10 @@ Original java implementation files ported from https://github.com/KdotJPG/OpenSi
 
 NB: SimplexNoise by convention generates values in range `-1.0..1.0` cf Perlin Noise `0..1.0`
 
+To build:-
+
+clone repository then use `rake` to run tasks, and you are done! Create a gem if you want...
+
 Usage:-
 
 ```ruby
