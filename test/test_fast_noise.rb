@@ -11,46 +11,45 @@ class NoiseTest < Minitest::Test
   VALS = [0.4, 0.5, 4, 5].freeze
 
   def test_noise1d
-
     assert self.respond_to? :noise
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(noise(x))
-    end
+    result = VALS.map { |x| noise(x) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_noise2d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(noise(x, Math.sin(x)))
-    end
+    result = VALS.map { |x| noise(x, Math.sin(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_noise3d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x)))
-    end
+    result = VALS.map { |x| noise(x, Math.sin(x), Math.cos(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_noise4d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(noise(x, Math.sin(x), Math.cos(x), rand))
-    end
+    result = VALS.map { |x| noise(x, rand, Math.sin(x), Math.cos(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_tnoise2d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x)))
-    end
+    result = VALS.map { |x| tnoise(x, Math.sin(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_tnoise3d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x)))
-    end
+    result = VALS.map { |x| tnoise(x, Math.sin(x), Math.cos(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 
   def test_tnoise4d
-    VALS.each do |x|
-      assert (-1.0..1.0).include?(tnoise(x, Math.sin(x), Math.cos(x), rand))
-    end
+    result = VALS.map { |x| tnoise(x, rand, Math.sin(x), Math.cos(x)) }
+    assert result.all? { |x| (-1.0..1.0).include?(x) }
+    assert VALS.length == result.uniq.length
   end
 end
